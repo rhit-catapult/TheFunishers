@@ -14,9 +14,10 @@ class Character:
         pygame.draw.circle(self.screen, "red", (self.x + 15, self.y + 5), 3)
 
 
+# This function is called when you run this file, and is used to test the Character class individually.
+# When you create more files with different classes, copy the code below, then
+# change it to properly test that class
 def test_character():
-    # This function is called when you run this file, and is used to test the Character class individually.
-    # When you create more files with different classes, copy this code and change it to test that class
     # TODO: change this function to test your class
     screen = pygame.display.set_mode((640, 480))
     character = Character(screen, 400, 400)
@@ -31,6 +32,6 @@ def test_character():
 
 
 # Testing the classes
-# click the green arrow to the right to test this class
+# click the green arrow to the left or run "Current File" in PyCharm to test this class
 if __name__ == "__main__":
     test_character()

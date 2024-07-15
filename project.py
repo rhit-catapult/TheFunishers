@@ -19,7 +19,7 @@ def main():
     # let's set the framerate
     clock = pygame.time.Clock()
     while True:
-        clock.tick(60)
+        clock.tick(60)  # this sets the framerate of your game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -36,5 +36,6 @@ def main():
 
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
+
 
 main()
