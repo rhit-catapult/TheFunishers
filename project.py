@@ -4,7 +4,7 @@ import my_character
 import random
 import time
 from timer import Timer
-
+import my_character
 
 def main():
     # turn on pygame
@@ -15,7 +15,7 @@ def main():
     # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((640, 480))
     # creates a Character from the my_character.py file
-    character = my_character.Character(screen, 100, 100)
+    character = my_character.Character(screen, 100, 100, 7)
 
     countdown = Timer(screen)
 
@@ -29,7 +29,16 @@ def main():
 
             # TODO: Add you events code
 
-        # TODO: Fill the screen with whatever background color you like!
+            pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[pygame.K_UP]:
+            my_character.y -= 10
+        if pressed_keys[pygame.K_DOWN]:
+            my_character.y += 10
+        if pressed_keys[pygame.K_LEFT]:
+            my_character.x -= 10
+        if pressed_keys[pygame.K_RIGHT]:
+            my_character.x += 10
+    # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
         countdown.countdown()
 

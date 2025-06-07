@@ -3,10 +3,12 @@ import sys
 
 
 class Character:
-    def __init__(self, screen: pygame.Surface, x, y):
+    def __init__(self, screen: pygame.Surface, x, y, speed):
         self.screen = screen
         self.x = x
         self.y = y
+        self.speed = 7
+        # self.image = pygame.image.load(image_filename)
 
     def draw(self):
         pygame.draw.rect(self.screen, "blue", (self.x, self.y, 20, 20))
