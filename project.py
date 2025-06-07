@@ -3,6 +3,7 @@ import sys
 import my_character
 import random
 import time
+from timer import Timer
 
 
 def main():
@@ -16,6 +17,8 @@ def main():
     # creates a Character from the my_character.py file
     character = my_character.Character(screen, 100, 100)
 
+    countdown = Timer(screen)
+
     # let's set the framerate
     clock = pygame.time.Clock()
     while True:
@@ -28,6 +31,7 @@ def main():
 
         # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
+        countdown.countdown()
 
         # draws the character every frame
         character.draw()

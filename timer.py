@@ -10,5 +10,5 @@ class Timer:
         self.start_time = time.time()
 
     def countdown(self):
-        time_left = int(60 - (time.time() - start_time))
+        time_left = int(60 - (time.time() - self.start_time))
         print(time_left)
