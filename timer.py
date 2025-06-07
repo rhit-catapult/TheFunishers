@@ -14,4 +14,6 @@ class Timer:
         else:
             self.font = pygame.font.SysFont("comicsansms", 50)
             caption = self.font.render(str(time_left), True, (255, 0, 0))
+        if time_left < 0:
+            return True
         self.screen.blit(caption, (25, 25))
