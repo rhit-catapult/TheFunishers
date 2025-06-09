@@ -34,13 +34,13 @@ def main():
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
-            character.y -= 5
+            character.y -= 3
         if pressed_keys[pygame.K_DOWN]:
-            character.y += 5
+            character.y += 3
         if pressed_keys[pygame.K_LEFT]:
-            character.x -= 5
+            character.x -= 3
         if pressed_keys[pygame.K_RIGHT]:
-            character.x += 5
+            character.x += 3
         screen.fill((160, 160, 160))
         if countdown.countdown() or pressed_keys[pygame.K_e]:
             end_num = 0
@@ -52,6 +52,10 @@ def main():
 
         if grass1.hit_by(character):
             end_num = 1
+            break
+
+        if spda1.hit_by(character):
+            end_num = 2
             break
 
 
@@ -92,5 +96,17 @@ def main():
             screen.fill((0, 0, 0))
             print("Grass")
             pygame.display.update()
+
+    if end_num == 2:
+        while True:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            screen.fill((0, 0, 0))
+            print("PDA")
+            pygame.display.update()
+
 
 main()
