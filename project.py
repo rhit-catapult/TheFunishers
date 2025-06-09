@@ -31,13 +31,13 @@ def main():
 
             pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
-            my_character.y -= 10
+            character.y -= 10
         if pressed_keys[pygame.K_DOWN]:
-            my_character.y += 10
+            character.y += 10
         if pressed_keys[pygame.K_LEFT]:
-            my_character.x -= 10
+            character.x -= 10
         if pressed_keys[pygame.K_RIGHT]:
-            my_character.x += 10
+            character.x += 10
     # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
         countdown.countdown()
