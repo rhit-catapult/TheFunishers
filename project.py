@@ -29,7 +29,7 @@ def main():
 
             # TODO: Add you events code
 
-            pressed_keys = pygame.key.get_pressed()
+        pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
             character.y -= 5
         if pressed_keys[pygame.K_DOWN]:
