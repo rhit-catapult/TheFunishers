@@ -9,7 +9,7 @@ class Character:
         self.y = y
         self.speed = 7
         self.image = pygame.image.load("stick_character.png")
-        self.image = pygame.transform.scale(self.image, (50, 50))
+        self.image = pygame.transform.scale(self.image, (30, 30))
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
