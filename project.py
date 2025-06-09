@@ -17,6 +17,8 @@ def main():
     character = my_character.Character(screen, 100, 100)
 
     countdown = Timer(screen)
+    pygame.mixer.music.load("game_music.mp3")
+    pygame.mixer.music.play(-1)
 
     grass1 = Grass(screen, 300, 200, 50, 50)
 
