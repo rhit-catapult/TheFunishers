@@ -40,7 +40,7 @@ def main():
             character.x -= 5
         if pressed_keys[pygame.K_RIGHT]:
             character.x += 5
-        screen.fill((255, 255, 255))
+        screen.fill((160, 160, 160))
         if countdown.countdown():
             end_num = 0
             break
