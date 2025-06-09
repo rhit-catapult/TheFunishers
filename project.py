@@ -5,6 +5,7 @@ import random
 import time
 from timer import Timer
 import my_character
+from GRASS import Grass
 
 def main():
     # turn on pygame
@@ -18,6 +19,8 @@ def main():
     character = my_character.Character(screen, 100, 100, 7)
 
     countdown = Timer(screen)
+
+    grass1 =
 
     # let's set the framerate
     clock = pygame.time.Clock()
