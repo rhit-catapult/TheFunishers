@@ -20,7 +20,7 @@ def main():
 
     countdown = Timer(screen)
 
-    grass1 = Grass(screen, 200, 150)
+    grass1 = Grass(screen, 200, 150, 10, 10)
 
     # let's set the framerate
     clock = pygame.time.Clock()
