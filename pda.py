@@ -12,7 +12,7 @@ class Still:
         self.screen = screen
         self.x = x
         self.y = y
-        self.image = pygame.image.load("istockphoto-1256522274-612x612-removebg-preview.png")
+        self.image = pygame.image.load("still_pda.png")
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
@@ -29,7 +29,7 @@ class Walking:
         self.screen = screen
         self.x = x
         self.y = y
-        self.image = pygame.image.load("pngtree-man-walking-forward-semi-flat-rgb-color-vector-illustration-png-image_4971208-removebg-preview.png")
+        self.image = pygame.image.load("walking_pda.png")
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
