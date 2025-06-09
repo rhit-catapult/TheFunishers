@@ -21,7 +21,7 @@ class Character:
 def test_character():
     # TODO: change this function to test your class
     screen = pygame.display.set_mode((640, 480))
-    character = Character(screen, 400, 400, 7)
+    character = Character(screen, 400, 400)
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
