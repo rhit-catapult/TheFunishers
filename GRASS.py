@@ -1,10 +1,12 @@
 import pygame
 class Grass:
-    def __init__(self, screen, x, y):
+    def __init__(self, screen, x, y, width, height):
         self.screen = screen
         self.x = x
         self.y = y
         self.image = pygame.image.load("grass.png")
+        self.width = width
+        self.height = height
     def draw (self):
         self.screen.blit(self.image, (self.x, self.y))
     def hit_by(self, player):
