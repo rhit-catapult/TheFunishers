@@ -10,11 +10,37 @@ from pda import Walking
 def main():
     pygame.init()
     pygame.mixer.init()
-    end_font = pygame.font.SysFont("comicsansms", 30)
+    font = pygame.font.SysFont("comicsansms", 30)
 
     pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((640, 480))
     character = my_character.Character(screen, 100, 100)
+    clock = pygame.time.Clock()
+
+    message_text = ""
+    start_time = time.time()
+    while True:
+        clock.tick(60)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        screen.fill((0, 0, 0))
+        if time.time()-3 < start_time:
+            message_text = "Wake up sleepyhead!"
+        elif time.time()-6 < start_time:
+            message_text = "You slept in until 8:29!"
+        elif time.time()-10 < start_time:
+            message_text = "You have one minute to get to Hatfield Hall."
+        elif time.time()-12 < start_time:
+            message_text = "And remember..."
+        elif time.time()-15 < start_time:
+            message_text = "FOLLOW THE RULES"
+        else:
+            break
+        caption = font.render(message_text, True, (255, 255, 255))
+        screen.blit(caption, ((screen.get_width() - caption.get_width()) / 2, screen.get_height() - 55))
+        pygame.display.update()
 
     countdown = Timer(screen)
     pygame.mixer.music.load("game_music.mp3")
@@ -24,7 +50,6 @@ def main():
 
     spda1 = Still(screen, 200, 300)
 
-    clock = pygame.time.Clock()
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -82,8 +107,8 @@ def main():
             else:
                 message_text = ""
                 pygame.mixer.music.fadeout(2000)
-            end_caption = end_font.render(message_text, True, (255, 255, 255))
-            screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height()//2))
+            end_caption = font.render(message_text, True, (255, 255, 255))
+            screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height() - 55))
             pygame.display.update()
 
     if end_num == 1:
