@@ -18,7 +18,7 @@ class Timer:
         if time_left == 17:
             pygame.mixer.music.fadeout(5000)
         if time_left == 12:
-            pygame.mixer.music.load("sounds/countdown_music.mp3")
+            pygame.mixer.music.load("countdown_music.mp3")
             pygame.mixer.music.play(-1)
         if time_left == 0:
             pygame.mixer.music.stop()
