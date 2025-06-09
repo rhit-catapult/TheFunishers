@@ -1,10 +1,10 @@
-imprt pygame
-import sy
+import pygame
+import sys
 import my_character
 import random
 import time
-frm timer impot Tmer
-import my_characer
+from timer import Timer
+import my_character
 from GRASS import Grass
 
 def main():
@@ -13,14 +13,14 @@ def main():
     end_font = pygame.font.SysFont("comicsms", 30)
 
     pygame.display.set_caption("Cool Project")
-    screen  pygame.display.set_mode((640, 480))
+    screen = pygame.display.set_mode((640, 480))
     character = my_character.Character(screen, 100, 100)
 
     countdown = Timer(screen)
-    pygame.mixerusic.load("game_music.mp3")
+    pygame.mixer.music.load("game_music.mp3")
     pygame.mixer.music.play(-1)
 
-    grass1 = Grass(screen, 300 200, 50, 50)
+    grass1 = Grass(screen, 300, 200, 50, 50)
 
     clock = pygame.time.Clock()
     while True:
