@@ -13,6 +13,9 @@ class Still:
         self.x = x
         self.y = y
         self.image = pygame.image.load("person.png")
+        self.width = 80
+        self.height = 50
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
