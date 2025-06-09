@@ -52,6 +52,8 @@ def main():
 
         pygame.display.update()
 
+    pygame.mixer.music.stop()
+
     if end_num == 0:
         end_time = time.time()
         pygame.mixer.music.load("timer_end_music.mp3")
