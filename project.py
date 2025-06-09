@@ -31,16 +31,18 @@ def main():
 
             pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
-            character.y -= 10
+            character.y -= 5
         if pressed_keys[pygame.K_DOWN]:
-            character.y += 10
+            character.y += 5
         if pressed_keys[pygame.K_LEFT]:
-            character.x -= 10
+            character.x -= 5
         if pressed_keys[pygame.K_RIGHT]:
-            character.x += 10
+            character.x += 5
     # TODO: Fill the screen with whatever background color you like!
         screen.fill((255, 255, 255))
-        countdown.countdown()
+        if countdown.countdown():
+            end_num = 0
+            break
 
         # draws the character every frame
         character.draw()
@@ -50,5 +52,13 @@ def main():
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
 
+    if end_num == 0:
+        while True:
+            clock.tick(60)  # this sets the framerate of your game
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            screen.fill((0, 0, 0))
 
 main()
