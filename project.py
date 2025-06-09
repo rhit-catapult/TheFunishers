@@ -10,6 +10,7 @@ from GRASS import Grass
 def main():
     # turn on pygame
     pygame.init()
+    end_font = pygame.font.SysFont("comicsansms", 40)
 
     # create a screen
     pygame.display.set_caption("Cool Project")
@@ -60,6 +61,7 @@ def main():
         pygame.display.update()
 
     if end_num == 0:
+        end_time = time.time()
         while True:
             clock.tick(60)  # this sets the framerate of your game
             for event in pygame.event.get():
@@ -67,7 +69,13 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
-            print("Timer")
+            message_text = "You were late for the morning meeting."
+            if time.time()-5 > end_time:
+                message_text = "You know what happens now..."
+            if time.time()-10 > end_time:
+                message_text = ""
+            end_caption = end_font.render(message_text, True, (255, 255, 255))
+            screen.blit(end_caption, (0, screen.get_height()//2))
             pygame.display.update()
 
     if end_num == 1:
