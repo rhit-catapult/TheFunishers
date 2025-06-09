@@ -20,12 +20,12 @@ def main():
 
     countdown = Timer(screen)
 
-    grass1 = Grass(screen, 200, 150)
+    grass1 = Grass(screen, 0, 0, 5, 5,)
 
-    # let's set the framerate
+    # let's set the frame rate
     clock = pygame.time.Clock()
     while True:
-        clock.tick(60)  # this sets the framerate of your game
+        clock.tick(60)  # this sets the frame rate of your game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
@@ -58,7 +58,7 @@ def main():
 
     if end_num == 0:
         while True:
-            clock.tick(60)  # this sets the framerate of your game
+            clock.tick(60)  # this sets the frame rate of your game
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
