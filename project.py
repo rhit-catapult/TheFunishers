@@ -54,6 +54,10 @@ def main():
             end_num = 1
             break
 
+        if spda1.hit_by(character):
+            end_num = 2
+            break
+
 
         pygame.display.update()
 
@@ -92,5 +96,17 @@ def main():
             screen.fill((0, 0, 0))
             print("Grass")
             pygame.display.update()
+
+    if end_num == 2:
+        while True:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            screen.fill((0, 0, 0))
+            print("PDA")
+            pygame.display.update()
+
 
 main()
