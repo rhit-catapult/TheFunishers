@@ -37,7 +37,7 @@ def main():
         if pressed_keys[pygame.K_RIGHT]:
             character.x += 5
         screen.fill((160, 160, 160))
-        if countdown.countdown():
+        if countdown.countdown() or pressed_keys[pygame.K_e]:
             end_num = 0
             break
 
