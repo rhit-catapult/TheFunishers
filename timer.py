@@ -15,10 +15,13 @@ class Timer:
             self.font = pygame.font.SysFont("comicsansms", 50)
             caption = self.font.render(str(time_left), True, (255, 0, 0))
         pygame.mixer.init()
-        if time_left == 20:
+        if time_left == 17:
             pygame.mixer.music.fadeout(5000)
-        if time_left == 15:
-            pygame.mixer.music.load("../../Music/countdown_music.mp3")
+        if time_left == 12:
+            pygame.mixer.music.load("countdown_music.mp3")
+            pygame.mixer.music.play(-1)
+        if time_left == 0:
+            pygame.mixer.music.stop()
         if time_left < 0:
             return True
         self.screen.blit(caption, (25, 25))
