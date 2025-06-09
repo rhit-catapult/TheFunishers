@@ -20,7 +20,7 @@ def main():
 
     countdown = Timer(screen)
 
-    grass1 =
+    grass1 = Grass(screen, 200, 150)
 
     # let's set the framerate
     clock = pygame.time.Clock()
@@ -49,6 +49,7 @@ def main():
 
         # draws the character every frame
         character.draw()
+        grass1.draw()
 
         # TODO: Add your project code
 
