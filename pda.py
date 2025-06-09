@@ -3,12 +3,10 @@ import sys
 import random
 import time
 
-from pygame.examples.scrap_clipboard import screen
 
 class Still:
 
     def __init__(self, screen: pygame.surface, x, y):
-
         self.screen = screen
         self.x = x
         self.y = y
