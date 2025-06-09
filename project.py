@@ -20,7 +20,7 @@ def main():
 
     countdown = Timer(screen)
 
-    grass1 = Grass(screen, 300, 200, 10, 10)
+    grass1 = Grass(screen, 300, 200, 50, 50)
 
     # let's set the framerate
     clock = pygame.time.Clock()
@@ -51,9 +51,9 @@ def main():
         grass1.draw()
         character.draw()
 
-        #if grass1.hit_by(character):
-        #    end_num = 1
-        #    break
+        if grass1.hit_by(character):
+            end_num = 1
+            break
 
 
         # don't forget the update, otherwise nothing will show up!
@@ -68,6 +68,7 @@ def main():
 
             screen.fill((0, 0, 0))
             print("Timer")
+            pygame.display.update()
 
     if end_num == 1:
         while True:
@@ -78,5 +79,6 @@ def main():
 
             screen.fill((0, 0, 0))
             print("Grass")
+            pygame.display.update()
 
 main()
