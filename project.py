@@ -16,11 +16,11 @@ def main():
     # TODO: Change the size of the screen as you see fit!
     screen = pygame.display.set_mode((640, 480))
     # creates a Character from the my_character.py file
-    character = my_character.Character(screen, 100, 100, 7)
+    character = my_character.Character(screen, 100, 100)
 
     countdown = Timer(screen)
 
-    grass1 = Grass(screen, 200, 150, 10, 10)
+    grass1 = Grass(screen, 300, 200, 50, 50)
 
     # let's set the framerate
     clock = pygame.time.Clock()
@@ -48,8 +48,8 @@ def main():
             break
 
         # draws the character every frame
-        character.draw()
         grass1.draw()
+        character.draw()
 
         if grass1.hit_by(character):
             end_num = 1
@@ -68,6 +68,7 @@ def main():
 
             screen.fill((0, 0, 0))
             print("Timer")
+            pygame.display.update()
 
     if end_num == 1:
         while True:
@@ -78,5 +79,6 @@ def main():
 
             screen.fill((0, 0, 0))
             print("Grass")
+            pygame.display.update()
 
 main()
