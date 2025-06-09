@@ -8,6 +8,11 @@ class Grass:
         self.width = width
         self.height = height
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
+    def move(self, x, y, width, height):
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
     def draw (self):
         self.screen.blit(self.image, (self.x, self.y))
     def hit_by(self, player):
