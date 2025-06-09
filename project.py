@@ -51,7 +51,10 @@ def main():
         character.draw()
         grass1.draw()
 
-        # TODO: Add your project code
+        if grass1.hit_by(character):
+            end_num = 1
+            break
+
 
         # don't forget the update, otherwise nothing will show up!
         pygame.display.update()
@@ -64,5 +67,16 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
+            print("Timer")
+
+    if end_num == 1:
+        while True:
+            clock.tick(60)  # this sets the framerate of your game
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            screen.fill((0, 0, 0))
+            print("Grass")
 
 main()
