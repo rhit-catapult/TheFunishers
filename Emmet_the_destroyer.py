@@ -5,7 +5,7 @@ class Emmet:
         self.x = x
         self.y = y
         self.speed = 10
-        self.image = pygame.image.load("stick_character.png")
+        self.image = pygame.image.load("EmmetTheDestroyer.png")
         #self.image = pygame.transform.scale(self.image, (30, 30))
 
     def draw(self):
@@ -21,3 +21,5 @@ class Rocket:
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
+
+Emmet.draw()
