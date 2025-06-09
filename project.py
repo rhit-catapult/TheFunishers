@@ -9,7 +9,8 @@ from GRASS import Grass
 
 def main():
     pygame.init()
-    end_font = pygame.font.SysFont("comicsansms", 40)
+    pygame.mixer.init()
+    end_font = pygame.font.SysFont("comicsansms", 30)
 
     pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((640, 480))
@@ -53,6 +54,9 @@ def main():
 
     if end_num == 0:
         end_time = time.time()
+        pygame.mixer.music.load("timer_end_music.mp3")
+        pygame.mixer.music.play(-1)
+        message_text = ""
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -60,13 +64,15 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
-            message_text = "You were late for the morning meeting."
-            if time.time()-5 > end_time:
+            if time.time()-5 < end_time:
+                message_text = "You were late for the morning meeting."
+            elif time.time()-10 < end_time:
                 message_text = "You know what happens now..."
-            if time.time()-10 > end_time:
+            else:
                 message_text = ""
+                pygame.mixer.music.fadeout(2000)
             end_caption = end_font.render(message_text, True, (255, 255, 255))
-            screen.blit(end_caption, (0, screen.get_height()//2))
+            screen.blit(end_caption, (((screen.get_width() - end_caption.get_width())/2, screen.get_height()//2)))
             pygame.display.update()
 
     if end_num == 1:
