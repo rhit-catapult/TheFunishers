@@ -34,13 +34,13 @@ def main():
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
-            character.y -= 5
+            character.y -= 3
         if pressed_keys[pygame.K_DOWN]:
-            character.y += 5
+            character.y += 3
         if pressed_keys[pygame.K_LEFT]:
-            character.x -= 5
+            character.x -= 3
         if pressed_keys[pygame.K_RIGHT]:
-            character.x += 5
+            character.x += 3
         screen.fill((160, 160, 160))
         if countdown.countdown() or pressed_keys[pygame.K_e]:
             end_num = 0
