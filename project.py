@@ -1,7 +1,5 @@
 import pygame
 import sys
-import my_character
-import random
 import time
 from timer import Timer
 import my_character
@@ -54,6 +52,8 @@ def main():
 
         pygame.display.update()
 
+    pygame.mixer.music.stop()
+
     if end_num == 0:
         end_time = time.time()
         pygame.mixer.music.load("timer_end_music.mp3")
@@ -74,7 +74,7 @@ def main():
                 message_text = ""
                 pygame.mixer.music.fadeout(2000)
             end_caption = end_font.render(message_text, True, (255, 255, 255))
-            screen.blit(end_caption, (((screen.get_width() - end_caption.get_width())/2, screen.get_height()//2)))
+            screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height()//2))
             pygame.display.update()
 
     if end_num == 1:
@@ -89,4 +89,3 @@ def main():
             pygame.display.update()
 
 main()
-print("potato")
