@@ -4,6 +4,8 @@ import time
 from timer import Timer
 import my_character
 from GRASS import Grass
+from pda import Still
+from pda import Walking
 
 def main():
     pygame.init()
@@ -19,6 +21,8 @@ def main():
     pygame.mixer.music.play(-1)
 
     grass1 = Grass(screen, 300, 200, 50, 50)
+
+    spda1 = Still(screen, 200, 300)
 
     clock = pygame.time.Clock()
     while True:
@@ -43,6 +47,7 @@ def main():
             break
 
         grass1.draw()
+        spda1.draw()
         character.draw()
 
         if grass1.hit_by(character):
