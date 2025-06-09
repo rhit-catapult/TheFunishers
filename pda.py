@@ -1,0 +1,40 @@
+import pygame
+import sys
+import random
+import time
+
+from pygame.examples.scrap_clipboard import screen
+
+class Still:
+
+    def __init__(self, screen: pygame.surface, x, y, image_filename):
+
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.image = pygame.image.load("istockphoto-1256522274-612x612-removebg-preview.png")
+
+    def draw(self):
+        self.screen.blit(self.image, (self.x, self.y))
+
+    def hit_by(self, player):
+        still_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        player_hit_box = pygame.Rect(player.x, player.y, player.image.get_width(), player.image.get_height())
+        return still_hit_box.colliderect(player_hit_box)
+
+class Walking:
+
+    def __init__(self, screen: pygame.surface, x, y, image_filename2 ):
+
+        self.screen = screen
+        self.x = x
+        self.y = y
+        self.image = pygame.image.load("pngtree-man-walking-forward-semi-flat-rgb-color-vector-illustration-png-image_4971208-removebg-preview.png")
+
+    def draw(self):
+        self.screen.blit(self.image, (self.x, self.y))
+
+    def hit_by(self, player):
+        walking_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        player_hit_box = pygame.Rect(player.x, player.y, player.image.get_width(), player.image.get_height())
+        return walking_hit_box.colliderect(player_hit_box)
