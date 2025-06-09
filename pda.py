@@ -7,7 +7,7 @@ from pygame.examples.scrap_clipboard import screen
 
 class Still:
 
-    def __init__(self, screen: pygame.surface, x, y, image_filename):
+    def __init__(self, screen: pygame.surface, x, y):
 
         self.screen = screen
         self.x = x
@@ -24,7 +24,7 @@ class Still:
 
 class Walking:
 
-    def __init__(self, screen: pygame.surface, x, y, image_filename2 ):
+    def __init__(self, screen: pygame.surface, x, y):
 
         self.screen = screen
         self.x = x
