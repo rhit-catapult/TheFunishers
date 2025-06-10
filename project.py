@@ -62,13 +62,25 @@ def main():
 
         pressed_keys = pygame.key.get_pressed()
         if pressed_keys[pygame.K_UP]:
-            character.y -= 3
+            if character.y < 0:
+                character.y -= character.y
+            else:
+                character.y -= 3
         if pressed_keys[pygame.K_DOWN]:
-            character.y += 3
+            if character.y + character.image.get_height() > screen.get_height():
+                character.y += screen.get_height() - character.y - character.image.get_height()
+            else:
+                character.y += 3
         if pressed_keys[pygame.K_LEFT]:
-            character.x -= 3
+            if character.x < 0:
+                character.x -= character.x
+            else:
+                character.x -= 3
         if pressed_keys[pygame.K_RIGHT]:
-            character.x += 3
+            if character.x + character.image.get_width() > screen.get_width():
+                character.x += screen.get_width() - character.x - character.image.get_width()
+            else:
+                character.x += 3
         screen.fill((160, 160, 160))
         if countdown.countdown() or pressed_keys[pygame.K_e]:
             end_num = 0
