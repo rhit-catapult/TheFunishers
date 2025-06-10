@@ -52,6 +52,7 @@ def main():
     pygame.mixer.music.load("game_music.mp3")
     pygame.mixer.music.play(-1)
 
+    bsb = pygame.image.load("BSB.png")
     grass1 = Grass(screen, 300, 200, 50, 50)
     grass2 = Grass(screen, 300, 200, 50, 50)
     grass3 = Grass(screen, 300, 200, 50, 50)
@@ -100,6 +101,7 @@ def main():
         grass4.draw()
         grass5.draw()
         grass6.draw()
+        screen.blit(bsb,(0, 0))
         character.draw()
 
         if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character):
