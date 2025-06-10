@@ -58,13 +58,13 @@ def main():
     bsb = pygame.transform.scale(bsb, (243, 345))
     grass1 = Grass(screen, 300, 0, 340, 200)
     grass2 = Grass(screen, 300, 280, 340, 200)
-    grass3 = Grass(screen, 300, 0, 50, 50)
-    grass4 = Grass(screen, 300, 0, 50, 50)
-    grass5 = Grass(screen, 300, 0, 50, 50)
-    grass6 = Grass(screen, 300, 0, 50, 50)
+    grass3 = Grass(screen, 500, 0, 10, 10)
+    grass4 = Grass(screen, 500, 0, 10, 10)
+    grass5 = Grass(screen, 500, 0, 10, 10)
+    grass6 = Grass(screen, 500, 0, 10, 10)
 
 
-    """ Screen 1 (BSB) """
+    """Screen 1 (BSB)"""
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -127,14 +127,17 @@ def main():
 
         pygame.display.update()
 
-    #spda1 = Still(screen, 200, 300)
-    #spda2 = Still(screen, 200, 300)
-    #spda3 = Still(screen, 200, 300)
-    #spda4 = Still(screen, 200, 300)
-    #spda5 = Still(screen, 200, 300)
+    spda1 = Still(screen, 200, 300)
+    spda2 = Still(screen, 200, 300)
+    spda3 = Still(screen, 200, 300)
+    spda4 = Still(screen, 200, 300)
+    spda5 = Still(screen, 200, 300)
 
+    """Screen 2"""
     if screen_one_done:
         character.x = 0
+        grass1.move(0, 0, 100, 200)
+        grass2.move(0, 280, 100, 200)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -171,6 +174,7 @@ def main():
             #grass4.draw()
             #grass5.draw()
             #grass6.draw()
+            spda1.draw()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -181,9 +185,9 @@ def main():
                 end_num = 1
                 break
 
-            #if spda1.hit_by(character):
-            #    end_num = 2
-            #    break
+            if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(character) or spda5.hit_by(character):
+                end_num = 2
+                break
 
             if pressed_keys[pygame.K_w]:
                 end_num = 3
