@@ -18,6 +18,10 @@ class Still:
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
 
+    def move(self, x, y):
+        self.x = x
+        self.y = y
+
     def hit_by(self, player):
         still_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
         player_hit_box = pygame.Rect(player.x, player.y, player.image.get_width(), player.image.get_height())

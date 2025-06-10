@@ -72,6 +72,7 @@ def main():
     grass4 = Grass(screen, 300, 0, 340, 200)
     grass5 = Grass(screen, 300, 0, 340, 200)
     grass6 = Grass(screen, 300, 0, 340, 200)
+    grass7 = Grass(screen, 300, 0, 340, 200)
 
 
     """Screen 1 (BSB)"""
@@ -154,8 +155,14 @@ def main():
         grass2.move(0, 280, 180, 200)
         grass3.move(100, 0, 300, 50)
         grass4.move(180, 130, 80, 350)
-        grass5.move(500, 300, 10, 10)
-        grass6.move(520, 300, 10, 10)
+        grass5.move(400, 0, 80, 350)
+        grass6.move(260, 430, 380, 50)
+        grass7.move(560, 0, 80, 430)
+        spda1.move(360, 130)
+        spda2.move(260, 220)
+        spda3.move(360, 310)
+        #spda4.move(0, 0)
+        #spda5.move(0, 0)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -192,7 +199,12 @@ def main():
             grass4.draw()
             grass5.draw()
             grass6.draw()
+            grass7.draw()
             spda1.draw()
+            spda2.draw()
+            spda3.draw()
+            #spda4.draw()
+            #spda5.draw()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
