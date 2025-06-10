@@ -98,13 +98,18 @@ def main():
             end_num = 2
             break
 
+        if pressed_keys[pygame.K_w]:
+            end_num = 3
+            break
+
 
         pygame.display.update()
 
     pygame.mixer.music.stop()
 
+    end_time = time.time()
+
     if end_num == 0:
-        end_time = time.time()
         pygame.mixer.music.load("timer_end_music.mp3")
         pygame.mixer.music.play(-1)
         message_text = ""
@@ -146,6 +151,18 @@ def main():
 
             screen.fill((0, 0, 0))
             print("PDA")
+            pygame.display.update()
+
+    if end_num == 3:
+        pygame.mixer.music.load("good_end_music.mp3")
+        pygame.mixer.music.play(-1)
+        while True:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+            screen.fill((0, 0, 0))
             pygame.display.update()
 
 
