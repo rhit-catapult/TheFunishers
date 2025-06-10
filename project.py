@@ -2,7 +2,7 @@ import pygame
 import sys
 import time
 from timer import Timer
-import my_character
+from my_character import Character
 from GRASS import Grass
 from pda import Still
 from pda import Walking
@@ -14,7 +14,9 @@ def main():
 
     pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((640, 480))
-    character = my_character.Character(screen, 100, 100)
+    character = Character(screen, 100, 0)
+    character.x = 250
+    character.y = (screen.get_height() - character.image.get_height()) // 2
     clock = pygame.time.Clock()
     pygame.mixer.music.load("alarm_clock.mp3")
     pygame.mixer.music.play(-1)
@@ -53,6 +55,7 @@ def main():
     pygame.mixer.music.play(-1)
 
     bsb = pygame.image.load("BSB.png")
+    bsb = pygame.transform.scale(bsb, (243, 345))
     grass1 = Grass(screen, 300, 0, 340, 200)
     grass2 = Grass(screen, 300, 280, 340, 200)
     grass3 = Grass(screen, 300, 0, 50, 50)
@@ -61,7 +64,7 @@ def main():
     grass6 = Grass(screen, 300, 0, 50, 50)
 
 
-
+    """ Screen 1 (BSB) """
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -91,9 +94,6 @@ def main():
             else:
                 character.x += 3
         screen.fill((160, 160, 160))
-        if countdown.countdown() or pressed_keys[pygame.K_e]:
-            end_num = 0
-            break
 
         grass1.draw()
         grass2.draw()
@@ -101,8 +101,12 @@ def main():
         #grass4.draw()
         #grass5.draw()
         #grass6.draw()
-        #screen.blit(bsb,(0, 0))
+        screen.blit(bsb,(0, (screen.get_height() - bsb.get_height()) // 2))
         character.draw()
+
+        if countdown.countdown() or pressed_keys[pygame.K_e]:
+            end_num = 0
+            break
 
         if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character):
             end_num = 1
@@ -116,12 +120,77 @@ def main():
             end_num = 3
             break
 
+        if character.x == screen.get_width() - character.image.get_width() and character.y > 200 and character.y < 280:
+            screen_one_done = True
+            break
+
 
         pygame.display.update()
 
-    spda1 = Still(screen, 200, 300)
+    #spda1 = Still(screen, 200, 300)
+    #spda2 = Still(screen, 200, 300)
+    #spda3 = Still(screen, 200, 300)
+    #spda4 = Still(screen, 200, 300)
+    #spda5 = Still(screen, 200, 300)
+
+    if screen_one_done:
+        character.x = 0
+        while True:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
 
 
+            pressed_keys = pygame.key.get_pressed()
+            if pressed_keys[pygame.K_UP]:
+                if character.y < 0:
+                    character.y -= character.y
+                else:
+                    character.y -= 3
+            if pressed_keys[pygame.K_DOWN]:
+                if character.y + character.image.get_height() > screen.get_height():
+                    character.y += screen.get_height() - character.y - character.image.get_height()
+                else:
+                    character.y += 3
+            if pressed_keys[pygame.K_LEFT]:
+                if character.x < 0:
+                    character.x -= character.x
+                else:
+                    character.x -= 3
+            if pressed_keys[pygame.K_RIGHT]:
+                if character.x + character.image.get_width() > screen.get_width():
+                    character.x += screen.get_width() - character.x - character.image.get_width()
+                else:
+                    character.x += 3
+            screen.fill((160, 160, 160))
+
+            grass1.draw()
+            grass2.draw()
+            #grass3.draw()
+            #grass4.draw()
+            #grass5.draw()
+            #grass6.draw()
+            character.draw()
+
+            if countdown.countdown() or pressed_keys[pygame.K_e]:
+                end_num = 0
+                break
+
+            if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character):
+                end_num = 1
+                break
+
+            #if spda1.hit_by(character):
+            #    end_num = 2
+            #    break
+
+            if pressed_keys[pygame.K_w]:
+                end_num = 3
+                break
+
+
+            pygame.display.update()
 
     pygame.mixer.music.stop()
     end_time = time.time()
