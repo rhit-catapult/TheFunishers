@@ -38,6 +38,9 @@ def main():
             message_text = "FOLLOW THE RULES"
         else:
             break
+        pressed_keys = pygame.key.get_pressed()
+        if pressed_keys[pygame.K_SPACE]:
+            break
         caption = font.render(message_text, True, (255, 255, 255))
         screen.blit(caption, ((screen.get_width() - caption.get_width()) / 2, screen.get_height() - 55))
         pygame.display.update()
