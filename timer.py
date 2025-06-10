@@ -10,7 +10,7 @@ class Timer:
         time_left = int(60 - (time.time() - self.start_time))
         if time_left > 10:
             self.font = pygame.font.SysFont("comicsansms", 20)
-            caption = self.font.render(str(time_left), True, (0, 0, 0))
+            caption = self.font.render(str(time_left), True, (255, 255, 255))
         else:
             self.font = pygame.font.SysFont("comicsansms", 50)
             caption = self.font.render(str(time_left), True, (255, 0, 0))

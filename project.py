@@ -58,10 +58,10 @@ def main():
     bsb = pygame.transform.scale(bsb, (243, 345))
     grass1 = Grass(screen, 300, 0, 340, 200)
     grass2 = Grass(screen, 300, 280, 340, 200)
-    grass3 = Grass(screen, 500, 0, 10, 10)
-    grass4 = Grass(screen, 500, 0, 10, 10)
-    grass5 = Grass(screen, 500, 0, 10, 10)
-    grass6 = Grass(screen, 500, 0, 10, 10)
+    grass3 = Grass(screen, 300, 0, 340, 200)
+    grass4 = Grass(screen, 300, 0, 340, 200)
+    grass5 = Grass(screen, 300, 0, 340, 200)
+    grass6 = Grass(screen, 300, 0, 340, 200)
 
 
     """Screen 1 (BSB)"""
@@ -120,6 +120,10 @@ def main():
             end_num = 3
             break
 
+        if pressed_keys[pygame.K_1]:
+            screen_one_done = True
+            break
+
         if character.x == screen.get_width() - character.image.get_width() and character.y > 200 and character.y < 280:
             screen_one_done = True
             break
@@ -127,17 +131,21 @@ def main():
 
         pygame.display.update()
 
-    spda1 = Still(screen, 200, 300)
-    spda2 = Still(screen, 200, 300)
-    spda3 = Still(screen, 200, 300)
-    spda4 = Still(screen, 200, 300)
-    spda5 = Still(screen, 200, 300)
+    spda1 = Still(screen, 0, 400)
+    spda2 = Still(screen, 0, 400)
+    spda3 = Still(screen, 0, 400)
+    spda4 = Still(screen, 0, 400)
+    spda5 = Still(screen, 0, 400)
 
-    """Screen 2"""
+    """Screen 2 (Level 1)"""
     if screen_one_done:
         character.x = 0
         grass1.move(0, 0, 100, 200)
-        grass2.move(0, 280, 100, 200)
+        grass2.move(0, 280, 180, 200)
+        grass3.move(100, 0, 300, 50)
+        grass4.move(180, 130, 80, 350)
+        grass5.move(500, 300, 10, 10)
+        grass6.move(520, 300, 10, 10)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -170,10 +178,10 @@ def main():
 
             grass1.draw()
             grass2.draw()
-            #grass3.draw()
-            #grass4.draw()
-            #grass5.draw()
-            #grass6.draw()
+            grass3.draw()
+            grass4.draw()
+            grass5.draw()
+            grass6.draw()
             spda1.draw()
             character.draw()
 
