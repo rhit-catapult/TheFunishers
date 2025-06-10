@@ -16,6 +16,8 @@ def main():
     screen = pygame.display.set_mode((640, 480))
     character = my_character.Character(screen, 100, 100)
     clock = pygame.time.Clock()
+    pygame.mixer.music.load("alarm_clock.mp3")
+    pygame.mixer.music.play(-1)
 
     message_text = ""
     start_time = time.time()
@@ -45,6 +47,7 @@ def main():
         screen.blit(caption, ((screen.get_width() - caption.get_width()) / 2, screen.get_height() - 55))
         pygame.display.update()
 
+    pygame.mixer.music.stop()
     countdown = Timer(screen)
     pygame.mixer.music.load("game_music.mp3")
     pygame.mixer.music.play(-1)
