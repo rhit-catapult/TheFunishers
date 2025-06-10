@@ -53,8 +53,13 @@ def main():
     pygame.mixer.music.play(-1)
 
     grass1 = Grass(screen, 300, 200, 50, 50)
+    grass2 = Grass(screen, 300, 200, 50, 50)
+    grass3 = Grass(screen, 300, 200, 50, 50)
+    grass4 = Grass(screen, 300, 200, 50, 50)
+    grass5 = Grass(screen, 300, 200, 50, 50)
+    grass6 = Grass(screen, 300, 200, 50, 50)
 
-    spda1 = Still(screen, 200, 300)
+
 
     while True:
         clock.tick(60)
@@ -90,16 +95,20 @@ def main():
             break
 
         grass1.draw()
-        spda1.draw()
+        grass2.draw()
+        grass3.draw()
+        grass4.draw()
+        grass5.draw()
+        grass6.draw()
         character.draw()
 
-        if grass1.hit_by(character):
+        if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character):
             end_num = 1
             break
 
-        if spda1.hit_by(character):
-            end_num = 2
-            break
+        #if spda1.hit_by(character):
+        #    end_num = 2
+        #    break
 
         if pressed_keys[pygame.K_w]:
             end_num = 3
@@ -108,8 +117,11 @@ def main():
 
         pygame.display.update()
 
-    pygame.mixer.music.stop()
+    spda1 = Still(screen, 200, 300)
 
+
+
+    pygame.mixer.music.stop()
     end_time = time.time()
 
     if end_num == 0:
