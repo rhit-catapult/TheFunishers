@@ -20,8 +20,18 @@ def main():
     clock = pygame.time.Clock()
     pygame.mixer.music.load("alarm_clock.mp3")
     pygame.mixer.music.play(-1)
+    emmet_jumpscare = pygame.image.load("emmet_jumpscare.png")
+    emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
 
     message_text = ""
+    screen_one_done = False
+    screen_two_done = False
+    screen_three_done = False
+    screen_four_done = False
+    screen_five_done = False
+    screen_six_done = False
+    end_num = 0
+
     start_time = time.time()
     while True:
         clock.tick(60)
@@ -237,7 +247,7 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
-            print("Grass")
+            screen.blit(emmet_jumpscare, (0, 0))
             pygame.display.update()
 
     if end_num == 2:
@@ -248,7 +258,7 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
-            print("PDA")
+            screen.blit(emmet_jumpscare, (0, 0))
             pygame.display.update()
 
     if end_num == 3:
@@ -261,6 +271,14 @@ def main():
                     sys.exit()
 
             screen.fill((0, 0, 0))
+            if time.time() - 5 < end_time:
+                message_text = "You made it on time! Good job!"
+            elif time.time() - 10 < end_time:
+                message_text = "Now grab a seat before we start."
+            else:
+                message_text = ""
+            end_caption = font.render(message_text, True, (255, 255, 255))
+            screen.blit(end_caption, ((screen.get_width() - end_caption.get_width()) / 2, screen.get_height() - 55))
             pygame.display.update()
 
 
