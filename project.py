@@ -350,13 +350,13 @@ def main():
     if screen_three_done:
         character.x = 510
         character.y = screen.get_height() - character.image.get_height()
-        grass1 = Grass(screen, 0, 0, 480, 80)
-        grass2 = Grass(screen, 560, 0, 80, 80)
+        grass1 = Grass(screen, 0, 0, 80, 400)
+        grass2 = Grass(screen, 120, 120, 400, 240)
         grass3 = Grass(screen, 0, 400, 480, 80)
-        grass4 = Grass(screen, 560, 400, 80, 80)
-        grass5 = Grass(screen, 560, 400, 80, 80)
-        grass6 = Grass(screen, 560, 400, 80, 80)
-        grass7 = Grass(screen, 560, 400, 80, 80)
+        grass4 = Grass(screen, 560, 360, 80, 120)
+        grass5 = Grass(screen, 80, 0, 560, 80)
+        grass6 = Grass(screen, 520, 320, 120, 40)
+        grass7 = Grass(screen, 560, 80, 80, 200)
         spda1.move(450, 110)
         spda2.move(480, 150)
         spda3.move(525, 360)
@@ -365,6 +365,8 @@ def main():
         spda6.move(370, 240)
         spda7.move(310, 220)
         spda8.move(250, 210)
+        wpda1.move(275, 300)
+        wpda2.move(275, 140)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -394,8 +396,8 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
-            wpda1.walk_y(100, 340)
-            wpda2.walk_y(100, 340)
+            wpda1.walk_y(300, 420 )
+            wpda2.walk_y(20, 140)
             grass1.draw()
             grass2.draw()
             grass3.draw()
@@ -403,14 +405,14 @@ def main():
             grass5.draw()
             grass6.draw()
             grass7.draw()
-            spda1.draw()
-            spda2.draw()
-            spda3.draw()
-            spda4.draw()
-            spda5.draw()
-            spda6.draw()
-            spda7.draw()
-            spda8.draw()
+            #spda1.draw()
+            #spda2.draw()
+            #spda3.draw()
+            #spda4.draw()
+            #spda5.draw()
+            #spda6.draw()
+            #spda7.draw()
+            #spda8.draw()
             wpda1.draw()
             wpda2.draw()
             character.draw()
@@ -425,9 +427,13 @@ def main():
                 end_num = 1
                 break
 
-            if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(
-                    character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
-                    character) or spda8.hit_by(character) or wpda1.hit_by(character) or wpda2.hit_by(character):
+            #if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(
+            #        character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
+            #        character) or spda8.hit_by(character) or wpda1.hit_by(character) or wpda2.hit_by(character):
+            #    end_num = 2
+            #    break
+
+            if wpda1.hit_by(character) or wpda2.hit_by(character):
                 end_num = 2
                 break
 
