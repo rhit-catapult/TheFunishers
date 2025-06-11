@@ -130,7 +130,7 @@ def main():
         screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
         character.draw()
 
-        if countdown.countdown() or pressed_keys[pygame.K_e]:
+        if countdown.countdown():
             end_num = 0
             break
 
@@ -141,14 +141,6 @@ def main():
         #if spda1.hit_by(character):
         #    end_num = 2
         #    break
-
-        if pressed_keys[pygame.K_w]:
-            end_num = 3
-            break
-
-        if pressed_keys[pygame.K_1]:
-            screen_one_done = True
-            break
 
         if character.x == screen.get_width() - character.image.get_width():
             screen_one_done = True
@@ -234,7 +226,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -244,14 +236,6 @@ def main():
 
             if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(character) or spda8.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_2]:
-                screen_two_done = True
                 break
 
             if character.y == 0:
@@ -339,7 +323,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -353,14 +337,6 @@ def main():
                     character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
                     character) or spda8.hit_by(character) or wpda1.hit_by(character) or wpda2.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_3]:
-                screen_three_done = True
                 break
 
             if character.y == 0:
@@ -445,7 +421,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -463,14 +439,6 @@ def main():
 
             if wpda1.hit_by(character) or wpda2.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_4]:
-                screen_four_done = True
                 break
 
             if character.x == screen.get_width() - character.image.get_width():
@@ -571,7 +539,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -593,10 +561,6 @@ def main():
 
             if new_rocket.hit_by(character):
                 end_num = 4
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
                 break
 
             if character.x == screen.get_width() - character.image.get_width():
