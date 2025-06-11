@@ -5,7 +5,7 @@ class Emmet:
         self.x = x
         self.y = y
         self.speed = 10
-        self.image = pygame.image.load("EmmetTheDestroyer.png")
+        self.image = pygame.image.load("../EmmetTheDestroyer.png")
         self.ammo = []
         #self.image = pygame.transform.scale(self.image, (30, 30))
 
@@ -21,7 +21,7 @@ class Rocket:
         self.x = x
         self.y = y
         self.speed = 15
-        self.image = pygame.image.load("ESTES.png")
+        self.image = pygame.image.load("../ESTES.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.width = width
         self.length = length
@@ -46,4 +46,5 @@ def main():
         death.draw()
         boom.draw()
         pygame.display.update()
+
 main()
