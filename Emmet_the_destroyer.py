@@ -12,7 +12,7 @@ class Emmet:
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))
 
-    def rain(self):
+    def fire(self):
         new_rocket = Rocket(self.screen, self.x, self.y + self.image.get_height(), (self.image.get_width() / 4), self.image.get_height)
         self.ammo.append(new_rocket)
 class Rocket:
