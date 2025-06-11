@@ -470,6 +470,8 @@ def main():
     if screen_four_done:
         character.x = 0
         character.y = 290
+        emmet_sound = pygame.mixer.Sound("emmetrocket.mp3")
+        emmet_sound.play()
         fire_time = time.time()
         grass1 = Grass(screen, 0, 0, 640, 80)
         grass2 = Grass(screen, 0, 400, 640, 80)
@@ -590,7 +592,7 @@ def main():
 
     if end_num == 0:
         pygame.mixer.music.load("timer_end_music.mp3")
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play(0)
         message_text = ""
         while True:
             clock.tick(60)
@@ -611,7 +613,8 @@ def main():
             pygame.display.update()
 
     if end_num == 1:
-        print("Grass")
+        pygame.mixer.music.load("grasshole.mp3")
+        pygame.mixer.music.play(0)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -623,7 +626,8 @@ def main():
             pygame.display.update()
 
     if end_num == 2:
-        print("PDA")
+        pygame.mixer.music.load("nopda.mp3")
+        pygame.mixer.music.play(0)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -636,7 +640,7 @@ def main():
 
     if end_num == 3:
         pygame.mixer.music.load("good_end_music.mp3")
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play(0)
         finish_time = int(end_time - start_time)
         while True:
             clock.tick(60)
@@ -657,7 +661,7 @@ def main():
 
     if end_num == 4:
         pygame.mixer.music.load("death_sound.mp3")
-        pygame.mixer.music.play(-1)
+        pygame.mixer.music.play(0)
         wasted = pygame.image.load("wasted.png")
         wasted = pygame.transform.scale(wasted, (screen.get_width(), screen.get_height()))
         while True:
