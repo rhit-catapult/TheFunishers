@@ -25,7 +25,7 @@ class Rocket:
         self.screen = screen
         self.x = x
         self.y = y
-        self.speed = 15
+        self.speed = 10
         self.image = pygame.image.load("ESTES-removebg-preview.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.width = width
@@ -36,6 +36,11 @@ class Rocket:
 
     def move(self):
         self.y += self.speed
+
+    def hit_by(self, player):
+        rocket_hit_box = pygame.Rect(self.x, self.y, self.image.get_width(), self.image.get_height())
+        player_hit_box = pygame.Rect(player.x, player.y, player.image.get_width(), player.image.get_height())
+        return rocket_hit_box.colliderect(player_hit_box)
 
 #def main():
 #    pygame.init()

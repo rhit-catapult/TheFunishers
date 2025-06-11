@@ -30,7 +30,7 @@ def main():
     screen_two_done = False
     screen_three_done = False
     screen_four_done = False
-    end_num = 4
+    end_num = 5
 
     start_time = time.time()
     while True:
@@ -456,7 +456,7 @@ def main():
     if screen_four_done:
         character.x = 0
         character.y = 290
-        fire_time = int(time.time())
+        fire_time = time.time()
         grass1 = Grass(screen, 0, 0, 640, 80)
         grass2 = Grass(screen, 0, 400, 640, 80)
         grass3 = Grass(screen, 0, 80, 80, 200)
@@ -528,12 +528,13 @@ def main():
             #spda8.draw()
             #wpda1.draw()
             #wpda2.draw()
+            if int(time.time() - fire_time) % 2 == 0:
+                new_rocket = Rocket(emmet.screen, emmet.x + 28, emmet.y + emmet.image.get_height() - 15, (emmet.image.get_width() / 4),
+                                    emmet.image.get_height)
+            if time.time() - fire_time > 2:
+                new_rocket.draw()
+                new_rocket.move()
             emmet.draw()
-            if int(time.time() - fire_time) % 3 == 0:
-                emmet.fire()
-            for Rocket in emmet.ammo:
-                Rocket.draw()
-                Rocket.move()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -555,6 +556,10 @@ def main():
             #if wpda1.hit_by(character) or wpda2.hit_by(character):
             #    end_num = 2
             #    break
+
+            if new_rocket.hit_by(character):
+                end_num = 4
+                break
 
             if pressed_keys[pygame.K_w]:
                 end_num = 3
@@ -636,6 +641,16 @@ def main():
             pygame.display.update()
 
     if end_num == 4:
+        while True:
+            clock.tick(60)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    sys.exit()
+
+
+            pygame.display.update()
+
+    if end_num == 5:
         print("Something went wrong")
 
 main()
