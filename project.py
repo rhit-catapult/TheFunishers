@@ -163,9 +163,9 @@ def main():
         grass5 = Grass(screen, 400, 0, 80, 350)
         grass6 = Grass(screen, 260, 430, 380, 50)
         grass7 = Grass(screen, 560, 0, 80, 430)
-        spda1.move(360, 130)
-        spda2.move(260, 220)
-        spda3.move(360, 310)
+        spda1.move(355, 130)
+        spda2.move(265, 220)
+        spda3.move(355, 310)
         #spda4.move(0, 0)
         #spda5.move(0, 0)
         while True:
@@ -242,6 +242,7 @@ def main():
 
             pygame.display.update()
 
+    wpda1 = Walking(screen, 100, 200)
 
     """Screen 3 (Level 2: Road)"""
     if screen_two_done:
@@ -254,11 +255,14 @@ def main():
         grass5 = Grass(screen, 560, 400, 80, 80)
         grass6 = Grass(screen, 560, 400, 80, 80)
         grass7 = Grass(screen, 560, 400, 80, 80)
-        spda1.move(360, 130)
-        spda2.move(260, 220)
-        spda3.move(360, 310)
-        # spda4.move(0, 0)
-        # spda5.move(0, 0)
+        spda1.move(450, 110)
+        spda2.move(480, 150)
+        spda3.move(525, 360)
+        spda4.move(491, 310)
+        spda5.move(430, 270)
+        spda6.move(370, 240)
+        spda7.move(310, 220)
+        spda8.move(250, 210)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -288,6 +292,8 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
+            pygame.draw.rect(screen, (60, 60, 60), (0, 100, 640, 280))
+            wpda1.walk_y(100, 300)
             grass1.draw()
             grass2.draw()
             grass3.draw()
@@ -303,6 +309,7 @@ def main():
             spda6.draw()
             spda7.draw()
             spda8.draw()
+            wpda1.draw()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -317,7 +324,7 @@ def main():
 
             if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(
                     character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
-                    character) or spda8.hit_by(character):
+                    character) or spda8.hit_by(character) or wpda1.hit_by(character):
                 end_num = 2
                 break
 
