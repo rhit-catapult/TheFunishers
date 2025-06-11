@@ -641,12 +641,17 @@ def main():
             pygame.display.update()
 
     if end_num == 4:
+        pygame.mixer.music.load("death_sound.mp3")
+        pygame.mixer.music.play(-1)
+        wasted = pygame.image.load("wasted.png")
+        wasted = pygame.transform.scale(wasted, (screen.get_width(), screen.get_height()))
         while True:
             clock.tick(60)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
 
+            screen.blit(wasted, (0, 0))
 
             pygame.display.update()
 
