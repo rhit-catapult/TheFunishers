@@ -7,7 +7,7 @@ class Emmet:
         self.speed = 10
         self.image = pygame.image.load("EmmetTheDestroyer.png")
         self.ammo = []
-        #self.image = pygame.transform.scale(self.image, (30, 30))
+        self.image = pygame.transform.scale(self.image, (50, 50))
 
     def draw(self):
         self.screen.blit(self.image, (self.x, self.y))

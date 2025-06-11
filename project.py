@@ -28,8 +28,6 @@ def main():
     screen_two_done = False
     screen_three_done = False
     screen_four_done = False
-    screen_five_done = False
-    screen_six_done = False
     end_num = 4
 
     start_time = time.time()
@@ -219,7 +217,7 @@ def main():
                 end_num = 0
                 break
 
-            if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character):
+            if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(character) or grass7.hit_by(character):
                 end_num = 1
                 break
 
@@ -423,7 +421,7 @@ def main():
 
             if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(
                     character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(
-                    character):
+                    character) or grass7.hit_by(character):
                 end_num = 1
                 break
 
@@ -456,13 +454,15 @@ def main():
     if screen_four_done:
         character.x = 0
         character.y = 290
-        grass1 = Grass(screen, 0, 0, 640, 100)
-        grass2 = Grass(screen, 120, 120, 400, 240)
-        grass3 = Grass(screen, 0, 400, 480, 80)
-        grass4 = Grass(screen, 560, 360, 80, 120)
-        grass5 = Grass(screen, 80, 0, 560, 80)
-        grass6 = Grass(screen, 520, 320, 120, 40)
-        grass7 = Grass(screen, 560, 80, 80, 200)
+        grass1 = Grass(screen, 0, 0, 640, 80)
+        grass2 = Grass(screen, 0, 400, 640, 80)
+        grass3 = Grass(screen, 0, 80, 80, 200)
+        grass4 = Grass(screen, 0, 320, 120, 80)
+        grass5 = Grass(screen, 120, 120, 100, 280)
+        grass6 = Grass(screen, 260, 80, 100, 280)
+        grass7 = Grass(screen, 400, 120, 100, 280)
+        grass8 = Grass(screen, 540, 80, 100, 160)
+        grass9 = Grass(screen, 500, 280, 140, 120)
         spda1.move(450, 110)
         spda2.move(480, 150)
         spda3.move(525, 360)
@@ -504,13 +504,15 @@ def main():
 
             wpda1.walk_y(300, 420 )
             wpda2.walk_y(20, 140)
-            #grass1.draw()
-            #grass2.draw()
-            #grass3.draw()
-            #grass4.draw()
-            #grass5.draw()
-            #grass6.draw()
-            #grass7.draw()
+            grass1.draw()
+            grass2.draw()
+            grass3.draw()
+            grass4.draw()
+            grass5.draw()
+            grass6.draw()
+            grass7.draw()
+            grass8.draw()
+            grass9.draw()
             #spda1.draw()
             #spda2.draw()
             #spda3.draw()
@@ -527,11 +529,11 @@ def main():
                 end_num = 0
                 break
 
-            #if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(
-            #        character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(
-            #        character):
-            #    end_num = 1
-            #    break
+            if grass1.hit_by(character) or grass2.hit_by(character) or grass3.hit_by(
+                    character) or grass4.hit_by(character) or grass5.hit_by(character) or grass6.hit_by(
+                    character) or grass7.hit_by(character) or grass8.hit_by(character) or grass9.hit_by(character):
+                end_num = 1
+                break
 
             #if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(
             #        character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
@@ -547,9 +549,9 @@ def main():
                 end_num = 3
                 break
 
-            #if character.y == 0:
-            #    screen_three_done = True
-            #    break
+            if character.x == screen.get_width() - character.image.get_width():
+                end_num = 3
+                break
 
             pygame.display.update()
 
