@@ -26,7 +26,7 @@ class Rocket:
         self.x = x
         self.y = y
         self.speed = 15
-        self.image = pygame.image.load("ESTES.png")
+        self.image = pygame.image.load("ESTES-removebg-preview.png")
         self.image = pygame.transform.scale(self.image, (30, 30))
         self.width = width
         self.length = length
