@@ -507,8 +507,8 @@ def main():
         spda6.move(370, 240)
         spda7.move(310, 220)
         spda8.move(250, 210)
-        wpda1.move(275, 300)
-        wpda2.move(275, 140)
+        wpda1.move(160, 180)
+        wpda2.move(420, 240)
         emmet = Emmet(screen, 200, 15)
         while True:
             clock.tick(60)
@@ -539,8 +539,8 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
-            wpda1.walk_y(300, 420)
-            wpda2.walk_y(20, 140)
+            wpda1.walk_x(160, 420)
+            wpda2.walk_x(160, 420)
             emmet.move(50, 540)
             grass1.draw()
             grass2.draw()
@@ -559,8 +559,8 @@ def main():
             #spda6.draw()
             #spda7.draw()
             #spda8.draw()
-            #wpda1.draw()
-            #wpda2.draw()
+            wpda1.draw()
+            wpda2.draw()
             if int(time.time() - fire_time) % 2 == 0:
                 new_rocket = Rocket(emmet.screen, emmet.x + 28, emmet.y + emmet.image.get_height() - 15, (emmet.image.get_width() / 4),
                                     emmet.image.get_height)
@@ -587,9 +587,9 @@ def main():
             #    end_num = 2
             #    break
 
-            #if wpda1.hit_by(character) or wpda2.hit_by(character):
-            #    end_num = 2
-            #    break
+            if wpda1.hit_by(character) or wpda2.hit_by(character):
+                end_num = 2
+                break
 
             if new_rocket.hit_by(character):
                 end_num = 4
