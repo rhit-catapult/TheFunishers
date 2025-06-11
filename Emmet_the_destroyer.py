@@ -4,7 +4,7 @@ class Emmet:
         self.screen = screen
         self.x = x
         self.y = y
-        self.speed = 10
+        self.speed = 5
         self.image = pygame.image.load("EmmetTheDestroyer.png")
         self.ammo = []
         self.image = pygame.transform.scale(self.image, (50, 50))
@@ -15,6 +15,11 @@ class Emmet:
     def fire(self):
         new_rocket = Rocket(self.screen, self.x, self.y + self.image.get_height(), (self.image.get_width() / 4), self.image.get_height)
         self.ammo.append(new_rocket)
+
+    def move(self, end1, end2):
+        if self.x < end1 or self.x > end2:
+            self.speed *= -1
+        self.x += self.speed
 class Rocket:
     def __init__(self, screen, x, y, width, length):
         self.screen = screen
@@ -30,7 +35,7 @@ class Rocket:
         self.screen.blit(self.image, (self.x, self.y))
 
     def move(self):
-        self.y -= self.speed
+        self.y += self.speed
 
 #def main():
 #    pygame.init()

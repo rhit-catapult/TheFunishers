@@ -7,6 +7,7 @@ from GRASS import Grass
 from pda import Still
 from pda import Walking
 from Emmet_the_destroyer import Emmet
+from Emmet_the_destroyer import Rocket
 
 def main():
     pygame.init()
@@ -455,6 +456,7 @@ def main():
     if screen_four_done:
         character.x = 0
         character.y = 290
+        fire_time = int(time.time())
         grass1 = Grass(screen, 0, 0, 640, 80)
         grass2 = Grass(screen, 0, 400, 640, 80)
         grass3 = Grass(screen, 0, 80, 80, 200)
@@ -504,8 +506,9 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
-            wpda1.walk_y(300, 420 )
+            wpda1.walk_y(300, 420)
             wpda2.walk_y(20, 140)
+            emmet.move(50, 540)
             grass1.draw()
             grass2.draw()
             grass3.draw()
@@ -526,6 +529,11 @@ def main():
             #wpda1.draw()
             #wpda2.draw()
             emmet.draw()
+            if int(time.time() - fire_time) % 3 == 0:
+                emmet.fire()
+            for Rocket in emmet.ammo:
+                Rocket.draw()
+                Rocket.move()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
