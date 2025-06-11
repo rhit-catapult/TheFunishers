@@ -13,6 +13,8 @@ def main():
     pygame.init()
     pygame.mixer.init()
     font = pygame.font.SysFont("comicsansms", 30)
+    instructions_font = pygame.font.SysFont("comicsansms", 15)
+    ui_font = pygame.font.SysFont("impact", 20)
 
     pygame.display.set_caption("Cool Project")
     screen = pygame.display.set_mode((640, 480))
@@ -26,6 +28,7 @@ def main():
     emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
 
     message_text = ""
+    instructions = ""
     screen_one_done = False
     screen_two_done = False
     screen_three_done = False
@@ -33,6 +36,7 @@ def main():
     end_num = 5
 
     start_time = time.time()
+    """Start Screen"""
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -42,8 +46,10 @@ def main():
         screen.fill((0, 0, 0))
         if time.time()-3 < start_time:
             message_text = "Wake up sleepyhead!"
+            instructions = "(Press SPACE to skip)"
         elif time.time()-6 < start_time:
             message_text = "You slept in until 8:29!"
+            instructions = ""
         elif time.time()-10 < start_time:
             message_text = "You have one minute to get to Hatfield Hall."
         elif time.time()-12 < start_time:
@@ -57,6 +63,8 @@ def main():
             break
         caption = font.render(message_text, True, (255, 255, 255))
         screen.blit(caption, ((screen.get_width() - caption.get_width()) / 2, screen.get_height() - 55))
+        instruct_caption = instructions_font.render(instructions, True, (180, 180, 180))
+        screen.blit(instruct_caption, (screen.get_width() - instruct_caption.get_width() - 5, screen.get_height() - 20))
         pygame.display.update()
 
     pygame.mixer.music.stop()
@@ -73,6 +81,10 @@ def main():
     grass5 = Grass(screen, 300, 0, 340, 200)
     grass6 = Grass(screen, 300, 0, 340, 200)
     grass7 = Grass(screen, 300, 0, 340, 200)
+    instructions = "Press ARROW KEYS to move"
+
+    level_text = "1. BSB"
+    level = ui_font.render(level_text, True, (255, 255, 255))
 
 
     """Screen 1 (BSB)"""
@@ -113,6 +125,8 @@ def main():
         #grass5.draw()
         #grass6.draw()
         screen.blit(bsb,(0, (screen.get_height() - bsb.get_height()) // 2))
+        instruct_caption = instructions_font.render(instructions, True, (255, 255, 255))
+        screen.blit(instruct_caption, (screen.get_width() - instruct_caption.get_width() - 5, screen.get_height() - 20))
         character.draw()
 
         if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -623,6 +637,7 @@ def main():
     if end_num == 3:
         pygame.mixer.music.load("good_end_music.mp3")
         pygame.mixer.music.play(-1)
+        finish_time = int(end_time - start_time)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -635,7 +650,7 @@ def main():
             elif time.time() - 10 < end_time:
                 message_text = "Now grab a seat before we start."
             else:
-                message_text = ""
+                message_text = f"You made it in {finish_time} seconds"
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width()) / 2, screen.get_height() - 55))
             pygame.display.update()
