@@ -32,18 +32,18 @@ class Rocket:
     def move(self):
         self.y -= self.speed
 
-def main():
-    pygame.init()
-    pygame.mixer.init()
-    end_font = pygame.font.SysFont("comicsansms", 30)
-
-    pygame.display.set_caption("Cool Project")
-    screen = pygame.display.set_mode((640, 480))
-    death = Emmet(screen, 100, 100)
-    boom = Rocket(screen, 50, 100, 10, 20)
-    while True:
-        screen.fill((160, 160, 160))
-        death.draw()
-        boom.draw()
-        pygame.display.update()
-main()
+#def main():
+#    pygame.init()
+#    pygame.mixer.init()
+#    end_font = pygame.font.SysFont("comicsansms", 30)
+#
+#    pygame.display.set_caption("Cool Project")
+#    screen = pygame.display.set_mode((640, 480))
+#    death = Emmet(screen, 100, 100)
+#    boom = Rocket(screen, 50, 100, 10, 20)
+#    while True:
+#        screen.fill((160, 160, 160))
+#        death.draw()
+#        boom.draw()
+#        pygame.display.update()
+#main()

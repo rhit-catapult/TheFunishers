@@ -6,6 +6,7 @@ from my_character import Character
 from GRASS import Grass
 from pda import Still
 from pda import Walking
+from Emmet_the_destroyer import Emmet
 
 def main():
     pygame.init()
@@ -473,6 +474,7 @@ def main():
         spda8.move(250, 210)
         wpda1.move(275, 300)
         wpda2.move(275, 140)
+        emmet = Emmet(screen, 200, 15)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -523,6 +525,7 @@ def main():
             #spda8.draw()
             #wpda1.draw()
             #wpda2.draw()
+            emmet.draw()
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
