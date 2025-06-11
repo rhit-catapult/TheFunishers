@@ -87,7 +87,7 @@ def main():
     level = ui_font.render(level_text, True, (255, 255, 255))
 
 
-    """Screen 1 (BSB)"""
+    """Screen 1 (Level 1: BSB)"""
     while True:
         clock.tick(60)
         for event in pygame.event.get():
@@ -127,6 +127,7 @@ def main():
         screen.blit(bsb,(0, (screen.get_height() - bsb.get_height()) // 2))
         instruct_caption = instructions_font.render(instructions, True, (255, 255, 255))
         screen.blit(instruct_caption, (screen.get_width() - instruct_caption.get_width() - 5, screen.get_height() - 20))
+        screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
         character.draw()
 
         if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -165,8 +166,11 @@ def main():
     spda7 = Still(screen, 0, 400)
     spda8 = Still(screen, 0, 400)
 
+    level_text = "2. Beginning"
+    level = ui_font.render(level_text, True, (255, 255, 255))
 
-    """Screen 2 (Level 1: Beginning)"""
+
+    """Screen 2 (Level 2: Beginning)"""
     if screen_one_done:
         character.x = 0
         character.y = 230
@@ -227,6 +231,7 @@ def main():
             #spda6.draw()
             #spda7.draw()
             #spda8.draw()
+            screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -259,7 +264,11 @@ def main():
     wpda1 = Walking(screen, 200, 100)
     wpda2 = Walking(screen, 150, 340)
 
-    """Screen 3 (Level 2: Road)"""
+    level_text = "3. Road"
+    level = ui_font.render(level_text, True, (255, 255, 255))
+
+
+    """Screen 3 (Level 3: Road)"""
     if screen_two_done:
         character.x = 510
         character.y = screen.get_height() - character.image.get_height()
@@ -327,6 +336,7 @@ def main():
             spda8.draw()
             wpda1.draw()
             wpda2.draw()
+            screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -359,8 +369,11 @@ def main():
 
             pygame.display.update()
 
+    level_text = "4. Tight Squeeze"
+    level = ui_font.render(level_text, True, (255, 255, 255))
 
-    """Screen 4 (Level 3: Wraparound)"""
+
+    """Screen 4 (Level 4: Wraparound)"""
     if screen_three_done:
         character.x = 510
         character.y = screen.get_height() - character.image.get_height()
@@ -429,6 +442,7 @@ def main():
             #spda8.draw()
             wpda1.draw()
             wpda2.draw()
+            screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
@@ -465,8 +479,11 @@ def main():
 
             pygame.display.update()
 
+    level_text = "5. EMMET"
+    level = ui_font.render(level_text, True, (255, 255, 255))
 
-    """Screen 5 (Level 4: EMMET)"""
+
+    """Screen 5 (Level 5: EMMET)"""
     if screen_four_done:
         character.x = 0
         character.y = 290
@@ -551,6 +568,7 @@ def main():
                 new_rocket.draw()
                 new_rocket.move()
             emmet.draw()
+            screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
             if countdown.countdown() or pressed_keys[pygame.K_e]:
