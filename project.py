@@ -310,6 +310,10 @@ def main():
             screen.fill((160, 160, 160))
 
             pygame.draw.rect(screen, (60, 60, 60), (0, 100, 640, 280))
+            pygame.draw.rect(screen, (240, 240, 0), (0, 230, 640, 5))
+            pygame.draw.rect(screen, (240, 240, 0), (0, 245, 640, 5))
+            pygame.draw.rect(screen, (240, 240, 240), (0, 110, 640, 5))
+            pygame.draw.rect(screen, (240, 240, 240), (0, 365, 640, 5))
             wpda1.walk_y(100, 340)
             wpda2.walk_y(100, 340)
             grass1.draw()
