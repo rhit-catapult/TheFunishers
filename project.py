@@ -23,9 +23,15 @@ def main():
     character.y = (screen.get_height() - character.image.get_height()) // 2
     clock = pygame.time.Clock()
     pygame.mixer.music.load("alarm_clock.mp3")
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.play(0)
     emmet_jumpscare = pygame.image.load("emmet_jumpscare.png")
     emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
+    eathan_happy = pygame.image.load("eathan_happy.png")
+    eathan_happy = pygame.transform.scale(eathan_happy, (screen.get_width(), screen.get_height() - 80))
+    eathan_angry = pygame.image.load("eathan_angry.png")
+    eathan_angry = pygame.transform.scale(eathan_angry, (screen.get_width(), screen.get_height() - 80))
+    dirty_van = pygame.image.load("dirty_van.png")
+    dirty_van = pygame.transform.scale(dirty_van, (screen.get_width(), screen.get_height() - 80))
 
     message_text = ""
     instructions = ""
@@ -130,7 +136,7 @@ def main():
         screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
         character.draw()
 
-        if countdown.countdown() or pressed_keys[pygame.K_e]:
+        if countdown.countdown():
             end_num = 0
             break
 
@@ -141,14 +147,6 @@ def main():
         #if spda1.hit_by(character):
         #    end_num = 2
         #    break
-
-        if pressed_keys[pygame.K_w]:
-            end_num = 3
-            break
-
-        if pressed_keys[pygame.K_1]:
-            screen_one_done = True
-            break
 
         if character.x == screen.get_width() - character.image.get_width():
             screen_one_done = True
@@ -234,7 +232,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -244,14 +242,6 @@ def main():
 
             if spda1.hit_by(character) or spda2.hit_by(character) or spda3.hit_by(character) or spda4.hit_by(character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(character) or spda8.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_2]:
-                screen_two_done = True
                 break
 
             if character.y == 0:
@@ -339,7 +329,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -353,14 +343,6 @@ def main():
                     character) or spda5.hit_by(character) or spda6.hit_by(character) or spda7.hit_by(
                     character) or spda8.hit_by(character) or wpda1.hit_by(character) or wpda2.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_3]:
-                screen_three_done = True
                 break
 
             if character.y == 0:
@@ -445,7 +427,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -463,14 +445,6 @@ def main():
 
             if wpda1.hit_by(character) or wpda2.hit_by(character):
                 end_num = 2
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
-                break
-
-            if pressed_keys[pygame.K_4]:
-                screen_four_done = True
                 break
 
             if character.x == screen.get_width() - character.image.get_width():
@@ -507,9 +481,9 @@ def main():
         spda6.move(370, 240)
         spda7.move(310, 220)
         spda8.move(250, 210)
-        wpda1.move(275, 300)
-        wpda2.move(275, 140)
-        emmet = Emmet(screen, 200, 15)
+        wpda1.move(150, 180)
+        wpda2.move(430, 240)
+        emmet = Emmet(screen, 200, 10)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -539,8 +513,8 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
-            wpda1.walk_y(300, 420)
-            wpda2.walk_y(20, 140)
+            wpda1.walk_x(150, 430)
+            wpda2.walk_x(150, 430)
             emmet.move(50, 540)
             grass1.draw()
             grass2.draw()
@@ -559,8 +533,8 @@ def main():
             #spda6.draw()
             #spda7.draw()
             #spda8.draw()
-            #wpda1.draw()
-            #wpda2.draw()
+            wpda1.draw()
+            wpda2.draw()
             if int(time.time() - fire_time) % 2 == 0:
                 new_rocket = Rocket(emmet.screen, emmet.x + 28, emmet.y + emmet.image.get_height() - 15, (emmet.image.get_width() / 4),
                                     emmet.image.get_height)
@@ -571,7 +545,7 @@ def main():
             screen.blit(level, ((screen.get_width() - level.get_width()) // 2, 0))
             character.draw()
 
-            if countdown.countdown() or pressed_keys[pygame.K_e]:
+            if countdown.countdown():
                 end_num = 0
                 break
 
@@ -587,16 +561,12 @@ def main():
             #    end_num = 2
             #    break
 
-            #if wpda1.hit_by(character) or wpda2.hit_by(character):
-            #    end_num = 2
-            #    break
+            if wpda1.hit_by(character) or wpda2.hit_by(character):
+                end_num = 2
+                break
 
             if new_rocket.hit_by(character):
                 end_num = 4
-                break
-
-            if pressed_keys[pygame.K_w]:
-                end_num = 3
                 break
 
             if character.x == screen.get_width() - character.image.get_width():
@@ -621,11 +591,16 @@ def main():
             screen.fill((0, 0, 0))
             if time.time()-5 < end_time:
                 message_text = "You were late for the morning meeting."
+                screen.blit(eathan_angry, (0, 0))
             elif time.time()-10 < end_time:
                 message_text = "You know what happens now..."
-            else:
+                screen.blit(eathan_angry, (0, 0))
+            elif time.time()-15 < end_time:
                 message_text = ""
                 pygame.mixer.music.fadeout(2000)
+            else:
+                message_text = "VAN CLEANUP!!!"
+                screen.blit(dirty_van, (0, 0))
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height() - 55))
             pygame.display.update()
@@ -673,6 +648,7 @@ def main():
                 message_text = "Now grab a seat before we start."
             else:
                 message_text = f"You made it in {finish_time} seconds"
+            screen.blit(eathan_happy, (0, 0))
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width()) / 2, screen.get_height() - 55))
             pygame.display.update()
