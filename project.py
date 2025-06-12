@@ -3,7 +3,7 @@ import sys
 import time
 from timer import Timer
 from my_character import Character
-from sounds.GRASS import Grass
+from GRASS import Grass
 from pda import Still
 from pda import Walking
 from Emmet_the_destroyer import Emmet
@@ -16,7 +16,7 @@ def main():
     instructions_font = pygame.font.SysFont("comicsansms", 15)
     ui_font = pygame.font.SysFont("impact", 20)
 
-    pygame.display.set_caption("Cool Project")
+    pygame.display.set_caption("The Ultimate Funishment Game")
     screen = pygame.display.set_mode((640, 480))
     character = Character(screen, 100, 0)
     character.x = 250
@@ -26,6 +26,8 @@ def main():
     pygame.mixer.music.play(0)
     emmet_jumpscare = pygame.image.load("emmet_jumpscare.png")
     emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
+    eathan_bsb = pygame.image.load("eathan_bsb.png")
+    eathan_bsb = pygame.transform.scale(eathan_bsb, (screen.get_width(), screen.get_height() - 80))
     eathan_happy = pygame.image.load("eathan_happy.png")
     eathan_happy = pygame.transform.scale(eathan_happy, (screen.get_width(), screen.get_height() - 80))
     eathan_angry = pygame.image.load("eathan_angry.png")
@@ -71,6 +73,7 @@ def main():
         screen.blit(caption, ((screen.get_width() - caption.get_width()) / 2, screen.get_height() - 55))
         instruct_caption = instructions_font.render(instructions, True, (180, 180, 180))
         screen.blit(instruct_caption, (screen.get_width() - instruct_caption.get_width() - 5, screen.get_height() - 20))
+        screen.blit(eathan_bsb, (0, 0))
         pygame.display.update()
 
     pygame.mixer.music.stop()
@@ -601,6 +604,9 @@ def main():
             else:
                 message_text = "VAN CLEANUP!!!"
                 screen.blit(dirty_van, (0, 0))
+            if time.time()-15 == end_time:
+                pygame.mixer.music.load("plants-vs.mp3")
+                pygame.mixer.music.play(0)
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height() - 55))
             pygame.display.update()
