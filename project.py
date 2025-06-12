@@ -3,7 +3,7 @@ import sys
 import time
 from timer import Timer
 from my_character import Character
-from sounds.GRASS import Grass
+from GRASS import Grass
 from pda import Still
 from pda import Walking
 from Emmet_the_destroyer import Emmet

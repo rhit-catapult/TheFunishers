@@ -4,7 +4,7 @@ class Grass:
         self.screen = screen
         self.x = x
         self.y = y
-        self.image = pygame.image.load("../grass.png")
+        self.image = pygame.image.load("grass.png")
         self.width = width
         self.height = height
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
