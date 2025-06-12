@@ -585,6 +585,7 @@ def main():
         pygame.mixer.music.load("timer_end_music.mp3")
         pygame.mixer.music.play(0)
         message_text = ""
+        end_scream = True
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -604,9 +605,10 @@ def main():
             else:
                 message_text = "VAN CLEANUP!!!"
                 screen.blit(dirty_van, (0, 0))
-            if time.time()-15 == end_time:
+            if time.time()-15 > end_time and end_scream:
                 pygame.mixer.music.load("plants-vs.mp3")
                 pygame.mixer.music.play(0)
+                end_scream = False
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height() - 55))
             pygame.display.update()
