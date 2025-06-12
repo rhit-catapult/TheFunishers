@@ -22,8 +22,7 @@ def main():
     character.x = 250
     character.y = (screen.get_height() - character.image.get_height()) // 2
     clock = pygame.time.Clock()
-    pygame.mixer.music.load("alarm_clock.mp3")
-    pygame.mixer.music.play(0)
+
     emmet_jumpscare = pygame.image.load("emmet_jumpscare.png")
     emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
     eathan_bsb = pygame.image.load("eathan_bsb.png")
@@ -42,6 +41,9 @@ def main():
     screen_three_done = False
     screen_four_done = False
     end_num = 5
+
+    pygame.mixer.music.load("alarm_clock.mp3")
+    pygame.mixer.music.play(0)
 
     start_time = time.time()
     """Start Screen"""
