@@ -23,9 +23,15 @@ def main():
     character.y = (screen.get_height() - character.image.get_height()) // 2
     clock = pygame.time.Clock()
     pygame.mixer.music.load("alarm_clock.mp3")
-    pygame.mixer.music.play(-1)
+    pygame.mixer.music.play(0)
     emmet_jumpscare = pygame.image.load("emmet_jumpscare.png")
     emmet_jumpscare = pygame.transform.scale(emmet_jumpscare, (screen.get_width(), screen.get_height()))
+    eathan_happy = pygame.image.load("eathan_happy.png")
+    eathan_happy = pygame.transform.scale(eathan_happy, (screen.get_width(), screen.get_height() - 80))
+    eathan_angry = pygame.image.load("eathan_angry.png")
+    eathan_angry = pygame.transform.scale(eathan_angry, (screen.get_width(), screen.get_height() - 80))
+    dirty_van = pygame.image.load("dirty_van.png")
+    dirty_van = pygame.transform.scale(dirty_van, (screen.get_width(), screen.get_height() - 80))
 
     message_text = ""
     instructions = ""
@@ -475,9 +481,9 @@ def main():
         spda6.move(370, 240)
         spda7.move(310, 220)
         spda8.move(250, 210)
-        wpda1.move(160, 180)
-        wpda2.move(420, 240)
-        emmet = Emmet(screen, 200, 15)
+        wpda1.move(150, 180)
+        wpda2.move(430, 240)
+        emmet = Emmet(screen, 200, 10)
         while True:
             clock.tick(60)
             for event in pygame.event.get():
@@ -507,8 +513,8 @@ def main():
                     character.x += 3
             screen.fill((160, 160, 160))
 
-            wpda1.walk_x(160, 420)
-            wpda2.walk_x(160, 420)
+            wpda1.walk_x(150, 430)
+            wpda2.walk_x(150, 430)
             emmet.move(50, 540)
             grass1.draw()
             grass2.draw()
@@ -585,11 +591,16 @@ def main():
             screen.fill((0, 0, 0))
             if time.time()-5 < end_time:
                 message_text = "You were late for the morning meeting."
+                screen.blit(eathan_angry, (0, 0))
             elif time.time()-10 < end_time:
                 message_text = "You know what happens now..."
-            else:
+                screen.blit(eathan_angry, (0, 0))
+            elif time.time()-15 < end_time:
                 message_text = ""
                 pygame.mixer.music.fadeout(2000)
+            else:
+                message_text = "VAN CLEANUP!!!"
+                screen.blit(dirty_van, (0, 0))
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width())/2, screen.get_height() - 55))
             pygame.display.update()
@@ -637,6 +648,7 @@ def main():
                 message_text = "Now grab a seat before we start."
             else:
                 message_text = f"You made it in {finish_time} seconds"
+            screen.blit(eathan_happy, (0, 0))
             end_caption = font.render(message_text, True, (255, 255, 255))
             screen.blit(end_caption, ((screen.get_width() - end_caption.get_width()) / 2, screen.get_height() - 55))
             pygame.display.update()
